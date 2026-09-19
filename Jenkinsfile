@@ -7,6 +7,12 @@ pipeline {
 
     stages {
 
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t %IMAGE_NAME%:latest .'
@@ -41,4 +47,4 @@ pipeline {
             bat 'docker logout'
         }
     }
-}
+}    
